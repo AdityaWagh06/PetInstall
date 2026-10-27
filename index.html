@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PetInstall · Install your favorite pet in your own website</title>
+  <meta name="description" content="Add Bubu the panda and Dudu the bear to any website with one line of code. Pick an action, copy the snippet, done." />
+  <meta name="theme-color" content="#fff4f0" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='24' cy='26' r='14' fill='%232e2421'/%3E%3Ccircle cx='76' cy='26' r='14' fill='%232e2421'/%3E%3Ccircle cx='50' cy='56' r='40' fill='%23fff' stroke='%233b2b28' stroke-width='5'/%3E%3Ccircle cx='36' cy='56' r='5' fill='%232e2421'/%3E%3Ccircle cx='64' cy='56' r='5' fill='%232e2421'/%3E%3Ccircle cx='26' cy='68' r='7' fill='%23f9aeb6'/%3E%3Ccircle cx='74' cy='68' r='7' fill='%23f9aeb6'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <script src="petbuddy.js" defer></script>
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#playground">Skip to the code</a>
+
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  </div>
+
+  <header class="nav" id="top">
+    <a class="logo" href="#top" aria-label="PetInstall home">
+      <span class="logo__mark" aria-hidden="true"></span>
+      <span>Pet<b>Install</b></span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#pets">Pets</a>
+      <a href="#together">Together</a>
+      <a href="#playground">Playground</a>
+      <a href="#actions">Actions</a>
+      <a href="#install">Install</a>
+    </nav>
+    <a class="btn btn--dark btn--sm" href="#playground">Get the code</a>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__copy">
+        <p class="eyebrow reveal"><span class="dot"></span> Free · one line of code · works on any site</p>
+        <h1 class="hero__title">
+          <span class="line"><span>Install your</span></span>
+          <span class="line"><span><em>favorite pet</em></span></span>
+          <span class="line"><span>in your own website.</span></span>
+        </h1>
+        <p class="hero__sub reveal">Bubu and Dudu walk, wave, hug, dance, high five and nap together right on your pages. Pick a pet, pick an action, paste one snippet. No framework, no account, no fuss.</p>
+        <div class="hero__cta reveal">
+          <a class="btn btn--dark" href="#playground">Pick your pet <span aria-hidden="true">→</span></a>
+          <a class="btn btn--ghost" href="#actions">See all actions</a>
+        </div>
+        <ul class="hero__stats reveal">
+          <li><b data-count="2">0</b><span>pets so far</span></li>
+          <li><b data-count="25">0</b><span>solo actions</span></li>
+          <li><b data-count="12">0</b><span>together scenes</span></li>
+        </ul>
+      </div>
+
+      <div class="stage reveal" aria-label="Bubu and Dudu">
+        <div class="stage__ring"></div>
+        <div class="stage__hearts" aria-hidden="true"></div>
+        <div class="stage__pets">
+          <pet-duo id="heroDuo" pets="dudu bubu" mode="inline" size="180" accessory="none bowtie" scene="flow"></pet-duo>
+        </div>
+        <div class="stage__floor"></div>
+        <div class="stage__chips" role="group" aria-label="Make them do something">
+          <button type="button" data-scene="hug">🤗 Hug</button>
+          <button type="button" data-scene="kiss">💋 Kiss</button>
+          <button type="button" data-scene="highfive">🙌 High five</button>
+          <button type="button" data-scene="holdhands">🤝 Hold hands</button>
+          <button type="button" data-scene="dance">💃 Dance</button>
+          <button type="button" data-scene="peekaboo">🙈 Peekaboo</button>
+        </div>
+        <p class="stage__tip">They play together. Tap them too!</p>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track"></div>
+    </div>
+
+    <!-- PETS -->
+    <section class="section" id="pets">
+      <div class="section__head reveal">
+        <p class="kicker">Meet the pets</p>
+        <h2>Two best friends, <em>ready to move in.</em></h2>
+        <p>Same soft shape, same moves, two personalities. More pets are on the way.</p>
+      </div>
+      <div class="pets" id="petCards"></div>
+    </section>
+
+    <!-- TOGETHER -->
+    <section class="section together" id="together">
+      <div class="section__head reveal">
+        <p class="kicker">Better together</p>
+        <h2>Bubu and Dudu <em>play with each other.</em></h2>
+        <p>Twelve little stories: hugs, cheek kisses, high fives, peekaboo, snack sharing and more. Pick one and watch.</p>
+      </div>
+      <div class="tg reveal">
+        <div class="tg__stage">
+          <pet-duo id="tgDuo" pets="bubu dudu" mode="inline" size="170" scene="flow" hint="none"></pet-duo>
+          <div class="tg__floor"></div>
+          <p class="tg__now" id="tgNow" aria-live="polite">Playing everything</p>
+        </div>
+        <div class="tg__list" id="tgList" role="group" aria-label="Scenes"></div>
+      </div>
+    </section>
+
+    <!-- PLAYGROUND -->
+    <section class="section playground" id="playground">
+      <div class="section__head reveal">
+        <p class="kicker">Playground</p>
+        <h2>Build your pet, <em>copy the code.</em></h2>
+        <p>Every choice updates the preview and the snippet. Paste it before <code>&lt;/body&gt;</code> and your pet moves in.</p>
+      </div>
+
+      <div class="pg reveal">
+        <div class="pg__preview">
+          <div class="browser">
+            <div class="browser__bar">
+              <i></i><i></i><i></i>
+              <span class="browser__url">your-website.com</span>
+            </div>
+            <div class="browser__body">
+              <div class="fake">
+                <span class="fake__h"></span><span class="fake__p"></span><span class="fake__p short"></span>
+                <span class="fake__btn"></span>
+              </div>
+              <div class="pg__petwrap" id="previewWrap"></div>
+              <p class="pg__mode-note" id="modeNote"></p>
+            </div>
+          </div>
+          <div class="pg__actions-row">
+            <button type="button" class="btn btn--ghost btn--sm" id="replay">↻ Replay action</button>
+            <button type="button" class="btn btn--ghost btn--sm" id="tryLive">Try it live on this page</button>
+          </div>
+        </div>
+
+        <div class="pg__controls">
+          <fieldset class="ctl">
+            <legend>1. Pet</legend>
+            <div class="seg seg--pets" id="ctlPet"></div>
+          </fieldset>
+
+          <fieldset class="ctl">
+            <legend>2. Action</legend>
+            <div class="chips" id="ctlAction"></div>
+            <label class="check"><input type="checkbox" id="ctlOnce" /> Play it once, then just idle</label>
+          </fieldset>
+
+          <div class="ctl ctl--row" role="group">
+            <div>
+              <p class="lbl">3. Mode</p>
+              <div class="seg" id="ctlMode">
+                <button type="button" data-v="roam" aria-pressed="true">Roam the page</button>
+                <button type="button" data-v="inline" aria-pressed="false">Sit in place</button>
+              </div>
+            </div>
+            <div id="sideWrap">
+              <p class="lbl">Walks in from</p>
+              <div class="seg" id="ctlSide">
+                <button type="button" data-v="right" aria-pressed="true">Right</button>
+                <button type="button" data-v="left" aria-pressed="false">Left</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ctl ctl--row" role="group">
+            <div class="grow">
+              <p class="lbl">4. Size <output id="sizeOut">104px</output></p>
+              <input type="range" id="ctlSize" min="56" max="260" step="2" value="104" aria-label="Size in pixels" />
+            </div>
+            <div>
+              <p class="lbl">Accessory</p>
+              <div class="seg" id="ctlAcc"></div>
+            </div>
+          </div>
+
+          <fieldset class="ctl">
+            <legend>5. Speech bubble</legend>
+            <input type="text" id="ctlHint" maxlength="60" placeholder="Hi! I'm Bubu. Tap me or drag me" aria-label="Speech bubble text" />
+            <label class="check"><input type="checkbox" id="ctlNoHint" /> No speech bubble</label>
+          </fieldset>
+        </div>
+
+        <div class="code">
+          <div class="code__tabs" role="tablist" aria-label="Code format">
+            <button type="button" role="tab" data-tab="html" aria-selected="true">HTML</button>
+            <button type="button" role="tab" data-tab="react" aria-selected="false">React / Next.js</button>
+            <button type="button" role="tab" data-tab="js" aria-selected="false">JavaScript</button>
+            <button type="button" role="tab" data-tab="wp" aria-selected="false">WordPress / Wix</button>
+            <span class="code__spacer"></span>
+            <a class="code__dl" href="petbuddy.js" download>Download petbuddy.js</a>
+            <button type="button" class="code__copy" id="copyBtn">Copy</button>
+          </div>
+          <pre class="code__pre" tabindex="0"><code id="codeOut"></code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACTION GALLERY -->
+    <section class="section" id="actions">
+      <div class="section__head reveal">
+        <p class="kicker">Every action</p>
+        <h2>Every mood, move <em>and moment together.</em></h2>
+        <p>Use <code>action="flow"</code> to cycle through everything, or lock your pet to the one you love. Switch to "Together" for scenes where Bubu and Dudu play with each other.</p>
+      </div>
+      <div class="gallery__filter seg reveal" id="galleryPet"></div>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section" id="install">
+      <div class="section__head reveal">
+        <p class="kicker">Install</p>
+        <h2>One line. <em>That's it.</em></h2>
+        <p>No CSS file, no setup, no account. The styles and animations are already inside <code>petbuddy.js</code>, so they can't clash with your site.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step__n">1</span>
+          <h3>Copy this line</h3>
+          <p>Pick your pet and action in the playground, or start with this one.</p>
+          <pre><code id="stepScript"></code></pre>
+          <button type="button" class="mini-btn step__copy" data-copy-from="stepScript">Copy line</button>
+        </li>
+        <li class="step reveal">
+          <span class="step__n">2</span>
+          <h3>Paste before &lt;/body&gt;</h3>
+          <p>Any site works: plain HTML, WordPress, Wix, Shopify, React. Paste it once, near the end of the page.</p>
+          <pre><code>  ...your page...
+  <span class="tk-c">&lt;!-- paste here --&gt;</span>
+&lt;/body&gt;</code></pre>
+        </li>
+        <li class="step reveal">
+          <span class="step__n">3</span>
+          <h3>Done</h3>
+          <p>Refresh your page and your pet walks in. Want both? Use <code>data-pets="bubu dudu"</code> and they play together.</p>
+          <pre><code id="stepDuo"></code></pre>
+          <button type="button" class="mini-btn step__copy" data-copy-from="stepDuo">Copy line</button>
+        </li>
+      </ol>
+
+      <div class="dev reveal">
+        <div>
+          <p class="kicker">For developers</p>
+          <h3>Bring your own pet</h3>
+          <p>Every pet shares the same body, moves and moods. A new pet is just a palette, so you can add your own mascot in a few lines.</p>
+        </div>
+        <pre><code id="registerCode"></code></pre>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="section__head reveal">
+        <p class="kicker">Questions</p>
+        <h2>Good to know</h2>
+      </div>
+      <div class="faq__list">
+        <details class="reveal" open><summary>Do I need a CSS file too?</summary><p>No. Everything the pets need, their drawings, styles and animations, is inside the one <code>petbuddy.js</code> file. Your own CSS can't break them and theirs can't touch your page.</p></details>
+        <details class="reveal"><summary>Does it slow my site down?</summary><p>No. It is one small file with no libraries. Each pet runs a single animation loop, and pets that sit in place rest when they are scrolled out of view.</p></details>
+        <details class="reveal"><summary>Will it clash with my styles?</summary><p>No. Each pet lives inside its own Shadow DOM, so your CSS can't break it and its CSS can't touch your page.</p></details>
+        <details class="reveal"><summary>Does it work with React, Vue, WordPress, Wix or Shopify?</summary><p>Yes. It is a standard web component, so anything that can render HTML can show a pet. The playground has ready snippets.</p></details>
+        <details class="reveal"><summary>Can I have more than one pet?</summary><p>Yes. Add as many <code>&lt;pet-buddy&gt;</code> tags as you like, like Bubu and Dudu on this page. Want them to play with each other? Use <code>&lt;pet-duo pets="bubu dudu"&gt;</code> and they hug, high five, share snacks and more.</p></details>
+        <details class="reveal"><summary>What about people who prefer less motion?</summary><p>Pets respect the reduced motion setting. They still change faces, but they don't jump, walk or spin.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__big">Give your website <em>a heartbeat.</em></div>
+    <div class="footer__row">
+      <span class="logo"><span class="logo__mark" aria-hidden="true"></span><span>Pet<b>Install</b></span></span>
+      <span>Bubu &amp; Dudu, made with love.</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- The two pets that live on this site -->
+  <pet-buddy id="siteBubu" pet="bubu" side="right" hint="Hi! I'm Bubu. Tap me or drag me"></pet-buddy>
+  <pet-buddy id="siteDudu" pet="dudu" side="left" hint="I'm Dudu! Throw me around"></pet-buddy>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
